@@ -58,14 +58,17 @@
   </div>
 
   <!-- Mobile Nav -->
-  <nav id="mobileMenu" class="hidden flex-col gap-4 bg-slate-900/90 backdrop-blur-md p-4 md:hidden">
-    <a href="/" class="hover:text-sky-400 transition">Home</a>
-    <a href="/about" class="hover:text-sky-400 transition">About</a>
-    <a href="/experience" class="hover:text-sky-400 transition">Experience</a>
-    <a href="/projects" class="hover:text-sky-400 transition">Projects</a>
-    <a href="/achievements" class="hover:text-sky-400 transition">Achievements</a>
-    <a href="/contact" class="hover:text-sky-400 transition">Contact</a>
-  </nav>
+    <nav id="mobileMenu" class="hidden bg-slate-900/90 backdrop-blur-md p-4 md:hidden">
+      <label for="mobileNavSelect" class="block text-slate-300 text-sm mb-2">Menu</label>
+      <select id="mobileNavSelect" class="w-full p-2 rounded bg-slate-800 text-slate-100 focus:ring-2 focus:ring-sky-400">
+        <option value="/">Home</option>
+        <option value="/about">About</option>
+        <option value="/experience">Experience</option>
+        <option value="/projects">Projects</option>
+        <option value="/achievements">Achievements</option>
+        <option value="/contact">Contact</option>
+      </select>
+    </nav>
 </header>
 
 
@@ -93,6 +96,12 @@
     menuButton.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
     });
+
+    // Dropdown navigation
+  const mobileNavSelect = document.getElementById("mobileNavSelect");
+  mobileNavSelect.addEventListener("change", (e) => {
+    window.location.href = e.target.value;
+  });
   </script>
 </body>
 </html>
