@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Home — Sunil Kumar Maddela{% endblock %}
+{% block content %}
+<section class="grid md:grid-cols-2 gap-8 items-center">
+  <div class="glass rounded-xl p-8 shadow-lg" data-aos="fade-right">
+    <h1 class="text-4xl font-extrabold text-sky-400">Hi, I'm Sunil </h1>
+    <p class="mt-4 text-lg text-slate-300">
+      Mechanical Design & Simulation Engineer with expertise in CAD, CFD, FEA, and sustainable engineering.
+    </p>
+    <div class="mt-6 flex gap-4">
+      <a href="/projects" class="px-5 py-2 bg-sky-500 text-white rounded-lg shadow hover:bg-sky-600 transition">View Projects</a>
+      <a href="/contact" class="px-5 py-2 border border-sky-400 text-sky-400 rounded-lg hover:bg-slate-800 transition">Contact</a>
+    </div>
+  </div>
+  <div data-aos="fade-left" class="flex justify-center">
+    <img src="/static/images/profile.png" alt="Profile" class="w-64 h-64 rounded-full ring-4 ring-sky-400 shadow-xl hover:scale-105 transition">
+  </div>
+</section>
+
+<!-- Publications Section -->
+<section class="mt-16 glass rounded-xl p-8 shadow-lg" data-aos="fade-up">
+  <h2 class="text-3xl font-bold text-sky-400 mb-6">Publications</h2>
+  <ul class="space-y-4 text-slate-200">
+    <li>
+      <span class="font-semibold text-sky-300">IJRAR (2024):</span>
+      Modeling and Structural Analysis of Composite Helical Suspension Springs <span class="italic">(Published)</span>
+    </li>
+    <li>
+      <span class="font-semibold text-sky-300">IJTE (2024):</span>
+      Optimizing Cutter Leaf Spring for Lightweight Vehicles <span class="italic">(Published)</span>
+    </li>
+    <li>
+      <span class="font-semibold text-sky-300">European Alliance for Innovation:</span>
+      Thin Wall Machining for Electric Vehicles <span class="italic">(Under Minor Review)</span>
+    </li>
+    <li>
+      <span class="font-semibold text-sky-300">ARAI Journal of Mobility:</span>
+      Energy Optimization in Hybrid and Plug-in Hybrid Vehicles Using Machine Learning <span class="italic">(Published)</span>
+    </li>
+  </ul>
+</section>
+{% endblock %}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{% block title %}Sunil Kumar Maddela{% endblock %}</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <style>
+    .glass { 
+      background: rgba(255, 255, 255, 0.08); 
+      backdrop-filter: blur(10px); 
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-slate-100">
+
+  <!-- NAVBAR -->
+  <!-- NAVBAR -->
+<header class="sticky top-0 z-50 bg-slate-900/70 backdrop-blur-md shadow-md">
+  <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+    
+    <!-- Left: Profile -->
+    <a href="/" class="flex items-center gap-3">
+      <div class="w-11 h-11 rounded-full overflow-hidden ring-2 ring-sky-400">
+        <img src="/static/images/profile.png" alt="Profile" class="object-cover w-full h-full">
+      </div>
+      <div>
+        <div class="font-semibold text-sm sm:text-base">SUNIL KUMAR MADDELA</div>
+        <div class="text-xs sm:text-sm text-slate-400">Mech. Design & Simulation Engineer</div>
+      </div>
+    </a>
+
+    <!-- Right: Desktop Nav -->
+    <nav class="hidden md:flex items-center gap-6 text-sm md:text-base">
+      <a href="/" class="hover:text-sky-400 transition">Home</a>
+      <a href="/about" class="hover:text-sky-400 transition">About</a>
+      <a href="/experience" class="hover:text-sky-400 transition">Experience</a>
+      <a href="/projects" class="hover:text-sky-400 transition">Projects</a>
+      <a href="/achievements" class="hover:text-sky-400 transition">Achievements</a>
+      <a href="/contact" class="hover:text-sky-400 transition">Contact</a>
+    </nav>
+
+    <!-- Right: Mobile Menu Button -->
+    <div class="md:hidden">
+      <button id="mobileMenuButton" class="focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Nav -->
+  <nav id="mobileMenu" class="hidden flex-col gap-4 bg-slate-900/90 backdrop-blur-md p-4 md:hidden">
+    <a href="/" class="hover:text-sky-400 transition">Home</a>
+    <a href="/about" class="hover:text-sky-400 transition">About</a>
+    <a href="/experience" class="hover:text-sky-400 transition">Experience</a>
+    <a href="/projects" class="hover:text-sky-400 transition">Projects</a>
+    <a href="/achievements" class="hover:text-sky-400 transition">Achievements</a>
+    <a href="/contact" class="hover:text-sky-400 transition">Contact</a>
+  </nav>
+</header>
+
+
+  <!-- CONTENT -->
+  <main class="flex-grow max-w-6xl mx-auto w-full px-4 py-10 sm:px-6 lg:px-8">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900/80 backdrop-blur-md shadow-inner py-6 text-center text-slate-400 mt-auto">
+    <div>© {{ (2025) }} Sunil Kumar Maddela — Built with ❤️ using FastAPI & Tailwind</div>
+  </footer>
+
+  <!-- AOS init -->
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true,
+      easing: 'ease-in-out',
+    });
+
+    // Mobile Menu Toggle
+    const menuButton = document.getElementById('mobileMenuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

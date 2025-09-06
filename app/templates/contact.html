@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}Contact — Sunil Kumar Maddela{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto space-y-6">
+  <!-- Contact Info -->
+  <div class="glass p-8 rounded-xl shadow" data-aos="fade-up">
+    <h3 class="text-2xl font-semibold text-sky-400">Contact Info</h3>
+    <p class="mt-2 text-slate-300">📧 
+      <a href="mailto:sunilkumar.iiit862@gmail.com" class="underline hover:text-sky-400">sunilkumar.iiit862@gmail.com</a>
+    </p>
+    <p class="text-slate-300">📱 +91 9553044634</p>
+    <p class="text-slate-300">📍 Rostock, Germany</p>
+  </div>
+
+  <!-- Contact Form -->
+  <form id="contactForm" class="glass p-6 rounded-xl shadow space-y-4" data-aos="fade-up" data-aos-delay="100">
+    <div>
+      <label class="block text-sm font-medium text-slate-300">Name</label>
+      <input name="name" required class="mt-1 w-full px-3 py-2 rounded bg-slate-800 border border-slate-600 text-slate-100" />
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-slate-300">Email</label>
+      <input name="email" type="email" required class="mt-1 w-full px-3 py-2 rounded bg-slate-800 border border-slate-600 text-slate-100" />
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-slate-300">Message</label>
+      <textarea name="message" rows="5" required class="mt-1 w-full px-3 py-2 rounded bg-slate-800 border border-slate-600 text-slate-100"></textarea>
+    </div>
+    <div>
+      <button type="submit" class="w-full bg-sky-500 text-white py-2 rounded-lg hover:bg-sky-600 transition">Send Message</button>
+    </div>
+  </form>
+</div>
+
+<!-- Popup notification -->
+<div id="popup" class="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded shadow-lg hidden z-50 transition-all duration-500">
+  Message sent successfully!
+</div>
+
+<script>
+const form = document.getElementById("contactForm");
+const popup = document.getElementById("popup");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault(); // prevent normal form submission
+
+  const formData = new FormData(form);
+  const data = {
+    name: formData.get("name"),
+    email: formData.get("email"),
+    message: formData.get("message")
+  };
+
+  try {
+    const response = await fetch("/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+    const result = await response.json();
+
+    if(result.status === "success"){
+      popup.textContent = result.message;
+      popup.classList.remove("hidden");
+      setTimeout(() => popup.classList.add("hidden"), 3000);
+      form.reset();
+    } else {
+      popup.textContent = "Failed to send message. Try again.";
+      popup.classList.remove("hidden");
+      popup.classList.replace("bg-green-500", "bg-red-500");
+      setTimeout(() => {
+        popup.classList.add("hidden");
+        popup.classList.replace("bg-red-500", "bg-green-500");
+      }, 3000);
+    }
+  } catch (err) {
+    popup.textContent = "An error occurred. Try again.";
+    popup.classList.remove("hidden");
+    popup.classList.replace("bg-green-500", "bg-red-500");
+    setTimeout(() => {
+      popup.classList.add("hidden");
+      popup.classList.replace("bg-red-500", "bg-green-500");
+    }, 3000);
+  }
+});
+</script>
+{% endblock %}
